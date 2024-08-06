@@ -5,4 +5,4 @@
 scratch.R
 ^README\.Rmd$
 skeleton\.html
-^biorecap-report.*\.html$
+biorecap-report-.*\.html

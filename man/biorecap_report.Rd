@@ -30,8 +30,10 @@ Nothing; called for its side effects to produce a report.
 Create a report from bioRxiv preprints
 }
 \examples{
-biorecap_report(use_example_preprints=TRUE)
+output_dir <- tempdir()
+biorecap_report(use_example_preprints=TRUE, output_dir=output_dir)
 \dontrun{
-biorecap_report(subject=c("bioinformatics", "genomics", "synthetic_biology"))
+biorecap_report(subject=c("bioinformatics", "genomics", "synthetic_biology"),
+                output_dir=output_dir)
 }
 }

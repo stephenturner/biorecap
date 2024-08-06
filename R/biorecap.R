@@ -232,9 +232,11 @@ tt_preprints <- function(preprints, cols=c("title", "summary"), width=c(1,3)) {
 #' @export
 #'
 #' @examples
-#' biorecap_report(use_example_preprints=TRUE)
+#' output_dir <- tempdir()
+#' biorecap_report(use_example_preprints=TRUE, output_dir=output_dir)
 #' \dontrun{
-#' biorecap_report(subject=c("bioinformatics", "genomics", "synthetic_biology"))
+#' biorecap_report(subject=c("bioinformatics", "genomics", "synthetic_biology"),
+#'                 output_dir=output_dir)
 #' }
 biorecap_report <- function(output_dir=".", subject=NULL, nsentences=2L, model="llama3.1", use_example_preprints=FALSE) {
   skeleton <- system.file("rmarkdown/templates/biorecap/skeleton/skeleton.Rmd", package="biorecap", mustWork = TRUE)
