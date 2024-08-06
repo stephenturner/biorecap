@@ -1,10 +1,10 @@
 Package: biorecap
-Title: What the Package Does (One Line, Title Case)
-Version: 0.0.0.9000
+Title: Retrieve and summarize bioRxiv preprints with a local LLM using ollama
+Version: 0.1.0
 Authors@R: 
     person("Stephen", "Turner", , "vustephen@gmail.com", role = c("aut", "cre"),
            comment = c(ORCID = "0000-0001-9140-9028"))
-Description: What the package does (one paragraph).
+Description: Retrieve and summarize bioRxiv preprints with a local LLM using ollama.
 License: MIT + file LICENSE
 Depends: 
     R (>= 4.2.0)

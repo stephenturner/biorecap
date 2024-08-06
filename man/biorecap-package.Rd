@@ -4,9 +4,9 @@
 \name{biorecap-package}
 \alias{biorecap}
 \alias{biorecap-package}
-\title{biorecap: What the Package Does (One Line, Title Case)}
+\title{biorecap: Retrieve and summarize bioRxiv preprints with a local LLM using ollama}
 \description{
-What the package does (one paragraph).
+Retrieve and summarize bioRxiv preprints with a local LLM using ollama.
 }
 \author{
 \strong{Maintainer}: Stephen Turner \email{vustephen@gmail.com} (\href{https://orcid.org/0000-0001-9140-9028}{ORCID})
