@@ -1,0 +1,8 @@
+^biorecap\.Rproj$
+^\.Rproj\.user$
+^LICENSE\.md$
+^data-raw$
+scratch.R
+^README\.Rmd$
+skeleton\.html
+^biorecap-report.*\.html$

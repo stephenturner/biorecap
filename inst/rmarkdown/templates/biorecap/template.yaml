@@ -1,0 +1,4 @@
+name: biorecap bioRxiv summary
+description: >
+   Report template for a biorecap bioRxiv summary.
+create_dir: FALSE

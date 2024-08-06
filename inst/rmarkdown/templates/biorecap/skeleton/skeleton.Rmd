@@ -1,0 +1,51 @@
+---
+title: "bioRxiv summary"
+date: "`r format(Sys.Date(), '%B %d, %Y')`"
+output: 
+  html_document: 
+    toc: yes
+params:
+  subject: NULL
+  nsentences: NULL
+  model: NULL
+  use_example_preprints: TRUE
+---
+
+## Report information
+
+Report produced by [biorecap](https://github.com/stephenturner/covcalc) on `r format(Sys.time(), "%Y-%m-%d %H:%M:%S %Z")`.
+
+- **Version**: `r packageVersion("biorecap")`
+- **Subject**: `r params$subject`
+- **Model**: `r params$model`
+
+
+```{r setup, include=FALSE}
+library(biorecap)
+knitr::opts_chunk$set(echo = FALSE, message=FALSE)
+```
+
+```{r summarize-preprints}
+if (params$use_example_preprints) {
+  warning("Using the example data")
+  pp <- example_preprints
+} else {
+  pp <- 
+    get_preprints(subject=params$subject) |> 
+    add_prompt() |> 
+    add_summary(model=params$model)
+}
+```
+
+
+```{r write-report-content, results='asis'}
+for (i in unique(pp$subject)) {
+  cat("##", gsub("_", " ", i), "\n\n")
+  pp |> 
+    dplyr::filter(subject==i) |> 
+    tt_preprints() |> 
+    tinytable::knit_print.tinytable() |>
+    cat()
+}
+```
+
