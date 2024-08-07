@@ -13,7 +13,7 @@ params:
 
 ## Report information
 
-Report produced by [biorecap](https://github.com/stephenturner/covcalc) on `r format(Sys.time(), "%Y-%m-%d %H:%M:%S %Z")`.
+Report produced by [biorecap](https://github.com/stephenturner/biorecap) on `r format(Sys.time(), "%Y-%m-%d %H:%M:%S %Z")`.
 
 - **Version**: `r packageVersion("biorecap")`
 - **Subject**: `r params$subject`
