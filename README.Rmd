@@ -4,6 +4,13 @@ output: github_document
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
+```{r, eval=FALSE, echo=FALSE}
+# Run interactively
+devtools::build_readme()
+pkgdown::build_site()
+```
+
+
 ```{r, include = FALSE}
 knitr::opts_chunk$set(
   collapse = TRUE,
@@ -18,37 +25,130 @@ knitr::opts_chunk$set(
 <!-- badges: start -->
 <!-- badges: end -->
 
-The goal of biorecap is to ...
+The goal of biorecap is to retrieve and summarize [bioRxiv](https://www.biorxiv.org/) preprints using a local LLM through [Ollama](https://ollama.com/). 
 
 ## Installation
 
 You can install the development version of biorecap like so:
 
 ``` r
-# FILL THIS IN! HOW CAN PEOPLE INSTALL YOUR DEV PACKAGE?
+pak::pkg_install("stephenturner/biorecap")
 ```
 
 ## Example
 
-This is a basic example which shows you how to solve a common problem:
+### Quick start
 
-```{r example}
+First, load the biorecap library.
+
+```{r}
 library(biorecap)
-## basic example code
 ```
 
-What is special about using `README.Rmd` instead of just `README.md`? You can include R chunks like so:
+Let's make sure Ollama is running and that we can talk to it through R:
 
-```{r cars}
-summary(cars)
+```{r, eval=FALSE}
+test_connection()
 ```
 
-You'll still need to render `README.Rmd` regularly, to keep `README.md` up-to-date. `devtools::build_readme()` is handy for this.
-
-You can also embed plots, for example:
-
-```{r pressure, echo = FALSE}
-plot(pressure)
+```
+#> Ollama local server running
+#> <httr2_response>
+#> GET http://localhost:11434/
+#> Status: 200 OK
+#> Content-Type: text/plain
+#> Body: In memory (17 bytes)
 ```
 
-In that case, don't forget to commit and push the resulting figure files, so they display on GitHub and CRAN.
+Next we can list our available models:
+
+```{r, eval=FALSE}
+list_models()
+```
+
+```
+#> # A tibble: 2 × 4
+#>   name            model           parameter_size quantization_level
+#>   <chr>           <chr>           <chr>          <chr>             
+#> 1 llama3.1:latest llama3.1:latest 8.0B           Q4_0              
+#> 2 llama3.1:70b    llama3.1:70b    70.6B          Q4_0
+```
+
+Write an HTML report containing summaries of recent preprints in select subject areas to the current working directory.
+
+```{r, eval=FALSE}
+biorecap_report(output_dir=".", 
+                subject=c("bioinformatics", "genomics", "synthetic_biology"), 
+                model="llama3.1")
+```
+
+Example HTML report generated from the bioRxiv RSS feed on August 6, 2024:
+
+```{r, echo=FALSE}
+knitr::include_graphics(here::here("man/figures/report_screenshot.png"))
+```
+
+
+### Details
+
+The `get_preprints()` function retrieves preprints from bioRxiv's RSS feeds. You pass one or more subjects to the `subject` argument. 
+
+```{r, eval=FALSE}
+pp <- get_preprints(subject=c("bioinformatics", 
+                              "genomics", 
+                              "synthetic_biology"))
+pp
+```
+
+```{r, echo=FALSE}
+pp <- example_preprints
+pp |> dplyr::select(-prompt, -summary)
+```
+
+The `add_prompt()` function adds a prompt to each preprint that will be used to prompt the model.
+
+```{r, eval=FALSE}
+pp <- pp |> add_prompt()
+pp
+```
+
+```{r, echo=FALSE}
+pp |> dplyr::select(-summary)
+```
+
+Let's take a look at one of these prompts:
+
+> I am giving you a paper’s title and abstract. Summarize the paper in as many sentences as I instruct. Do not include any preamble text. Just give me the summary. 
+> 
+> Number of sentences in summary: 2 
+> 
+> Title: SeuratExtend: Streamlining Single-Cell RNA-Seq Analysis Through an Integrated and Intuitive Framework 
+> 
+> Abstract: Single-cell RNA sequencing (scRNA-seq) has revolutionized the study of cellular heterogeneity, but the rapid expansion of analytical tools has proven to be both a blessing and a curse, presenting researchers with significant challenges. Here, we present SeuratExtend, a comprehensive R package built upon the widely adopted Seurat framework, which streamlines scRNA-seq data analysis by integrating essential tools and databases. SeuratExtend offers a user-friendly and intuitive interface for performing a wide range of analyses, including functional enrichment, trajectory inference, gene regulatory network reconstruction, and denoising. The package seamlessly integrates multiple databases, such as Gene Ontology and Reactome, and incorporates popular Python tools like scVelo, Palantir, and SCENIC through a unified R interface. SeuratExtend enhances data visualization with optimized plotting functions and carefully curated color schemes, ensuring both aesthetic appeal and scientific rigor. We demonstrate SeuratExtend’s performance through case studies investigating tumor-associated high-endothelial venules and autoinflammatory diseases, and showcase its novel applications in pathway-Level analysis and cluster annotation. SeuratExtend empowers researchers to harness the full potential of scRNA-seq data, making complex analyses accessible to a wider audience. The package, along with comprehensive documentation and tutorials, is freely available at GitHub, providing a valuable resource for the single-cell genomics community.
+
+The `add_summary()` function uses a locally running LLM available through Ollama to summarize the preprint. Let's add the summary. Notice that we can do this all in a single pipeline. This takes a few minutes!
+
+```{r, eval=FALSE}
+pp <- 
+  get_preprints(subject=c("bioinformatics", "genomics", "synthetic_biology")) |> 
+  add_prompt() |> 
+  add_summary(model="llama3.1")
+```
+
+Let's take a look at the results:
+
+```{r}
+pp
+```
+
+Let's look at one of those summaries. Here's the summary for the SeuratExtend paper (abstract above):
+
+> SeuratExtend is an R package that integrates essential tools and databases for single-cell RNA sequencing (scRNA-seq) data analysis, streamlining the process through a user-friendly interface. The package offers various analyses, including functional enrichment and gene regulatory network reconstruction, and seamlessly integrates multiple databases and popular Python tools.
+
+The `biorecap_report()` function runs this code in an RMarkdown template, writing the resulting HTML and CSV file with results to the current working directory.
+
+```{r, eval=FALSE}
+biorecap_report(output_dir=".", 
+                subject=c("bioinformatics", "genomics", "synthetic_biology"), 
+                model="llama3.1")
+```

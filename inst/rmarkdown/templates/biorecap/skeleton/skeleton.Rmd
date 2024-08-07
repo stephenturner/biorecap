@@ -8,7 +8,8 @@ params:
   subject: NULL
   nsentences: NULL
   model: NULL
-  use_example_preprints: TRUE
+  output_csv: NULL
+  use_example_preprints: FALSE
 ---
 
 ## Report information
@@ -34,6 +35,9 @@ if (params$use_example_preprints) {
     get_preprints(subject=params$subject) |> 
     add_prompt() |> 
     add_summary(model=params$model)
+}
+if (!is.null(output_csv)) {
+  write.csv(pp, output_csv, row.names = FALSE)
 }
 ```
 

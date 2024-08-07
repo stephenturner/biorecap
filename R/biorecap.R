@@ -232,9 +232,9 @@ tt_preprints <- function(preprints, cols=c("title", "summary"), width=c(1,3)) {
 #' @export
 #'
 #' @examples
+#' \dontrun{
 #' output_dir <- tempdir()
 #' biorecap_report(use_example_preprints=TRUE, output_dir=output_dir)
-#' \dontrun{
 #' biorecap_report(subject=c("bioinformatics", "genomics", "synthetic_biology"),
 #'                 output_dir=output_dir)
 #' }
@@ -242,10 +242,11 @@ biorecap_report <- function(output_dir=".", subject=NULL, nsentences=2L, model="
   skeleton <- system.file("rmarkdown/templates/biorecap/skeleton/skeleton.Rmd", package="biorecap", mustWork = TRUE)
   output_dir <- normalizePath(output_dir)
   output_file <- paste0("biorecap-report-", format(Sys.time(), "%Y-%m-%d-%H%M%S"), ".html")
+  output_csv <- file.path(output_dir, sub("\\.html$", ".csv", output_file))
   if (!use_example_preprints && is.null(subject)) stop("You must provide a subject. See ?subjects.")
   if (tools::file_ext(output_file) != "html") stop("Output file must have an .html extension.")
   rmarkdown::render(input=skeleton,
                     output_file=output_file,
                     output_dir=output_dir,
-                    params=list(subject=subject, nsentences=nsentences, model=model, use_example_preprints=use_example_preprints))
+                    params=list(subject=subject, nsentences=nsentences, model=model, use_example_preprints=use_example_preprints, output_csv=output_csv))
 }
