@@ -79,11 +79,12 @@
 <p>Next we can list our available models:</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://hauselin.github.io/ollama-r/reference/list_models.html" class="external-link">list_models</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
-<div class="sourceCode" id="cb6"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" tabindex="-1"></a><span class="co">#&gt; # A tibble: 2 × 4</span></span>
+<div class="sourceCode" id="cb6"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" tabindex="-1"></a><span class="co">#&gt; # A tibble: 3 × 4</span></span>
 <span id="cb6-2"><a href="#cb6-2" tabindex="-1"></a><span class="co">#&gt;   name            model           parameter_size quantization_level</span></span>
 <span id="cb6-3"><a href="#cb6-3" tabindex="-1"></a><span class="co">#&gt;   &lt;chr&gt;           &lt;chr&gt;           &lt;chr&gt;          &lt;chr&gt;             </span></span>
-<span id="cb6-4"><a href="#cb6-4" tabindex="-1"></a><span class="co">#&gt; 1 llama3.1:latest llama3.1:latest 8.0B           Q4_0              </span></span>
-<span id="cb6-5"><a href="#cb6-5" tabindex="-1"></a><span class="co">#&gt; 2 llama3.1:70b    llama3.1:70b    70.6B          Q4_0</span></span></code></pre></div>
+<span id="cb6-4"><a href="#cb6-4" tabindex="-1"></a><span class="co">#&gt; 1 gemma2:latest   gemma2:latest   9.2B           Q4_0              </span></span>
+<span id="cb6-5"><a href="#cb6-5" tabindex="-1"></a><span class="co">#&gt; 2 llama3.1:latest llama3.1:latest 8.0B           Q4_0              </span></span>
+<span id="cb6-6"><a href="#cb6-6" tabindex="-1"></a><span class="co">#&gt; 3 llama3.1:70b    llama3.1:70b    70.6B          Q4_0           </span></span></code></pre></div>
 <p>Write an HTML report containing summaries of recent preprints in select subject areas to the current working directory.</p>
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="reference/biorecap_report.html">biorecap_report</a></span><span class="op">(</span>output_dir<span class="op">=</span><span class="st">"."</span>, </span>
