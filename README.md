@@ -6,13 +6,12 @@
 <!-- badges: start -->
 <!-- badges: end -->
 
-The goal of biorecap is to retrieve and summarize
-[bioRxiv](https://www.biorxiv.org/) preprints using a local LLM through
-[Ollama](https://ollama.com/).
+Retrieve and summarize [bioRxiv](https://www.biorxiv.org/) preprints
+using a local LLM through [Ollama](https://ollama.com/).
 
 ## Installation
 
-You can install the development version of biorecap like so:
+Install biorecap from GitHub:
 
 ``` r
 remotes::install_github("stephenturner/biorecap")

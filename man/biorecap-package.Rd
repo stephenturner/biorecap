@@ -12,6 +12,7 @@ Retrieve and summarize bioRxiv preprints with a local LLM using ollama.
 Useful links:
 \itemize{
   \item \url{https://stephenturner.github.io/biorecap/}
+  \item Report bugs at \url{https://github.com/stephenturner/biorecap/issues}
 }
 
 }

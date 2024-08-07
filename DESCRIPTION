@@ -6,6 +6,8 @@ Authors@R:
            comment = c(ORCID = "0000-0001-9140-9028"))
 Description: Retrieve and summarize bioRxiv preprints with a local LLM using ollama.
 License: MIT + file LICENSE
+URL: https://stephenturner.github.io/biorecap/
+BugReports: https://github.com/stephenturner/biorecap/issues
 Depends: 
     R (>= 4.2.0)
 Imports: 
@@ -15,10 +17,9 @@ Imports:
     rmarkdown,
     tidyRSS,
     tinytable
+Suggests: 
+    knitr
 Encoding: UTF-8
 LazyData: true
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.3.2
-Suggests: 
-    knitr
-URL: https://stephenturner.github.io/biorecap/
