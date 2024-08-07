@@ -36,7 +36,7 @@ Install biorecap from GitHub (keep `dependencies=TRUE` to get Suggests packages 
 remotes::install_github("stephenturner/biorecap", dependencies=TRUE)
 ```
 
-## Example
+## Usage
 
 ### Quick start
 

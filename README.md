@@ -20,7 +20,7 @@ packages needed to create the HTML report):
 remotes::install_github("stephenturner/biorecap", dependencies=TRUE)
 ```
 
-## Example
+## Usage
 
 ### Quick start
 
