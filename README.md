@@ -4,6 +4,8 @@
 # biorecap
 
 <!-- badges: start -->
+
+[![R-CMD-check](https://github.com/stephenturner/biorecap/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/stephenturner/biorecap/actions/workflows/R-CMD-check.yaml)
 <!-- badges: end -->
 
 Retrieve and summarize [bioRxiv](https://www.biorxiv.org/) preprints
