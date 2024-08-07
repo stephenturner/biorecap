@@ -9,7 +9,8 @@
 <!-- badges: end -->
 
 Retrieve and summarize [bioRxiv](https://www.biorxiv.org/) preprints
-using a local LLM through [Ollama](https://ollama.com/).
+using a local LLM with [Ollama](https://ollama.com/) via
+[ollamar](https://cran.r-project.org/package=ollamar).
 
 ## Installation
 
