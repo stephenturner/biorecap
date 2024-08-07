@@ -15,7 +15,7 @@ The goal of biorecap is to retrieve and summarize
 You can install the development version of biorecap like so:
 
 ``` r
-pak::pkg_install("stephenturner/biorecap")
+remotes::install_github("stephenturner/biorecap")
 ```
 
 ## Example
