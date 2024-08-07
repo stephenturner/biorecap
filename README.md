@@ -13,10 +13,11 @@ using a local LLM through [Ollama](https://ollama.com/).
 
 ## Installation
 
-Install biorecap from GitHub:
+Install biorecap from GitHub (keep `dependencies=TRUE` to get Suggests
+packages needed to create the HTML report):
 
 ``` r
-remotes::install_github("stephenturner/biorecap")
+remotes::install_github("stephenturner/biorecap", dependencies=TRUE)
 ```
 
 ## Example
