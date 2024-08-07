@@ -6,3 +6,7 @@ scratch.R
 ^README\.Rmd$
 skeleton\.html
 biorecap-report-.*\.html
+^_pkgdown\.yml$
+^docs$
+^pkgdown$
+^\.github$

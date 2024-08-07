@@ -8,6 +8,13 @@
 \description{
 Retrieve and summarize bioRxiv preprints with a local LLM using ollama.
 }
+\seealso{
+Useful links:
+\itemize{
+  \item \url{https://stephenturner.github.io/biorecap/}
+}
+
+}
 \author{
 \strong{Maintainer}: Stephen Turner \email{vustephen@gmail.com} (\href{https://orcid.org/0000-0001-9140-9028}{ORCID})
 
