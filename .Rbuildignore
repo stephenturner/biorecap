@@ -10,3 +10,4 @@ biorecap-report-.*\.html
 ^docs$
 ^pkgdown$
 ^\.github$
+^CITATION\.cff$

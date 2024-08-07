@@ -1,0 +1,191 @@
+# --------------------------------------------
+# CITATION file created with {cffr} R package
+# See also: https://docs.ropensci.org/cffr/
+# --------------------------------------------
+ 
+cff-version: 1.2.0
+message: 'To cite package "biorecap" in publications use:'
+type: software
+license: MIT
+title: 'biorecap: Retrieve and summarize bioRxiv preprints with a local LLM using
+  ollama'
+version: 0.1.0
+abstract: Retrieve and summarize bioRxiv preprints with a local LLM using ollama.
+authors:
+- family-names: Turner
+  given-names: Stephen
+  email: vustephen@gmail.com
+  orcid: https://orcid.org/0000-0001-9140-9028
+repository-code: https://github.com/stephenturner/biorecap
+url: https://stephenturner.github.io/biorecap/
+contact:
+- family-names: Turner
+  given-names: Stephen
+  email: vustephen@gmail.com
+  orcid: https://orcid.org/0000-0001-9140-9028
+references:
+- type: software
+  title: 'R: A Language and Environment for Statistical Computing'
+  notes: Depends
+  url: https://www.R-project.org/
+  authors:
+  - name: R Core Team
+  institution:
+    name: R Foundation for Statistical Computing
+    address: Vienna, Austria
+  year: '2024'
+  version: '>= 4.2.0'
+- type: software
+  title: dplyr
+  abstract: 'dplyr: A Grammar of Data Manipulation'
+  notes: Imports
+  url: https://dplyr.tidyverse.org
+  repository: https://CRAN.R-project.org/package=dplyr
+  authors:
+  - family-names: Wickham
+    given-names: Hadley
+    email: hadley@posit.co
+    orcid: https://orcid.org/0000-0003-4757-117X
+  - family-names: François
+    given-names: Romain
+    orcid: https://orcid.org/0000-0002-2444-4226
+  - family-names: Henry
+    given-names: Lionel
+  - family-names: Müller
+    given-names: Kirill
+    orcid: https://orcid.org/0000-0002-1416-3412
+  - family-names: Vaughan
+    given-names: Davis
+    email: davis@posit.co
+    orcid: https://orcid.org/0000-0003-4777-038X
+  year: '2024'
+  doi: 10.32614/CRAN.package.dplyr
+- type: software
+  title: ollamar
+  abstract: 'ollamar: ''Ollama'' Language Models'
+  notes: Imports
+  url: https://hauselin.github.io/ollama-r/
+  repository: https://CRAN.R-project.org/package=ollamar
+  authors:
+  - family-names: Lin
+    given-names: Hause
+    email: hauselin@gmail.com
+    orcid: https://orcid.org/0000-0003-4590-7039
+  year: '2024'
+  doi: 10.32614/CRAN.package.ollamar
+- type: software
+  title: rlang
+  abstract: 'rlang: Functions for Base Types and Core R and ''Tidyverse'' Features'
+  notes: Imports
+  url: https://rlang.r-lib.org
+  repository: https://CRAN.R-project.org/package=rlang
+  authors:
+  - family-names: Henry
+    given-names: Lionel
+    email: lionel@posit.co
+  - family-names: Wickham
+    given-names: Hadley
+    email: hadley@posit.co
+  year: '2024'
+  doi: 10.32614/CRAN.package.rlang
+- type: software
+  title: rmarkdown
+  abstract: 'rmarkdown: Dynamic Documents for R'
+  notes: Imports
+  url: https://pkgs.rstudio.com/rmarkdown/
+  repository: https://CRAN.R-project.org/package=rmarkdown
+  authors:
+  - family-names: Allaire
+    given-names: JJ
+    email: jj@posit.co
+  - family-names: Xie
+    given-names: Yihui
+    email: xie@yihui.name
+    orcid: https://orcid.org/0000-0003-0645-5666
+  - family-names: Dervieux
+    given-names: Christophe
+    email: cderv@posit.co
+    orcid: https://orcid.org/0000-0003-4474-2498
+  - family-names: McPherson
+    given-names: Jonathan
+    email: jonathan@posit.co
+  - family-names: Luraschi
+    given-names: Javier
+  - family-names: Ushey
+    given-names: Kevin
+    email: kevin@posit.co
+  - family-names: Atkins
+    given-names: Aron
+    email: aron@posit.co
+  - family-names: Wickham
+    given-names: Hadley
+    email: hadley@posit.co
+  - family-names: Cheng
+    given-names: Joe
+    email: joe@posit.co
+  - family-names: Chang
+    given-names: Winston
+    email: winston@posit.co
+  - family-names: Iannone
+    given-names: Richard
+    email: rich@posit.co
+    orcid: https://orcid.org/0000-0003-3925-190X
+  year: '2024'
+  doi: 10.32614/CRAN.package.rmarkdown
+- type: software
+  title: tidyRSS
+  abstract: 'tidyRSS: Tidy RSS for R'
+  notes: Imports
+  url: https://github.com/RobertMyles/tidyrss
+  repository: https://CRAN.R-project.org/package=tidyRSS
+  authors:
+  - family-names: McDonnell
+    given-names: Robert Myles
+    email: robertmylesmcdonnell@gmail.com
+  year: '2024'
+  doi: 10.32614/CRAN.package.tidyRSS
+- type: software
+  title: tinytable
+  abstract: 'tinytable: Simple and Configurable Tables in ''HTML'', ''LaTeX'', ''Markdown'',
+    ''Word'', ''PNG'', ''PDF'', and ''Typst'' Formats'
+  notes: Imports
+  url: https://vincentarelbundock.github.io/tinytable/
+  repository: https://CRAN.R-project.org/package=tinytable
+  authors:
+  - family-names: Arel-Bundock
+    given-names: Vincent
+    email: vincent.arel-bundock@umontreal.ca
+    orcid: https://orcid.org/0000-0003-2042-7063
+  year: '2024'
+  doi: 10.32614/CRAN.package.tinytable
+- type: software
+  title: knitr
+  abstract: 'knitr: A General-Purpose Package for Dynamic Report Generation in R'
+  notes: Suggests
+  url: https://yihui.org/knitr/
+  repository: https://CRAN.R-project.org/package=knitr
+  authors:
+  - family-names: Xie
+    given-names: Yihui
+    email: xie@yihui.name
+    orcid: https://orcid.org/0000-0003-0645-5666
+  year: '2024'
+  doi: 10.32614/CRAN.package.knitr
+- type: software
+  title: markdown
+  abstract: 'markdown: Render Markdown with ''commonmark'''
+  notes: Suggests
+  url: https://github.com/rstudio/markdown
+  repository: https://CRAN.R-project.org/package=markdown
+  authors:
+  - family-names: Xie
+    given-names: Yihui
+    email: xie@yihui.name
+    orcid: https://orcid.org/0000-0003-0645-5666
+  - family-names: Allaire
+    given-names: JJ
+  - family-names: Horner
+    given-names: Jeffrey
+  year: '2024'
+  doi: 10.32614/CRAN.package.markdown
+
