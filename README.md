@@ -50,11 +50,12 @@ Next we can list our available models:
 list_models()
 ```
 
-    #> # A tibble: 2 × 4
+    #> # A tibble: 3 × 4
     #>   name            model           parameter_size quantization_level
     #>   <chr>           <chr>           <chr>          <chr>             
-    #> 1 llama3.1:latest llama3.1:latest 8.0B           Q4_0              
-    #> 2 llama3.1:70b    llama3.1:70b    70.6B          Q4_0
+    #> 1 gemma2:latest   gemma2:latest   9.2B           Q4_0              
+    #> 2 llama3.1:latest llama3.1:latest 8.0B           Q4_0              
+    #> 3 llama3.1:70b    llama3.1:70b    70.6B          Q4_0           
 
 Write an HTML report containing summaries of recent preprints in select
 subject areas to the current working directory.
