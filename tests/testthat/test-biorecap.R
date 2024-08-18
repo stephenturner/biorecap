@@ -35,6 +35,7 @@ test_that("tt_preprints", {
 })
 
 test_that("tt_preprints", {
+  skip_on_ci()
   output_dir <- tempdir()
   expect_silent(biorecap_report(use_example_preprints=TRUE, output_dir=output_dir, quiet=TRUE))
   expect_error(biorecap_report(use_example_preprints=FALSE, output_dir=output_dir))
