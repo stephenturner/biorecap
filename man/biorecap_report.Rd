@@ -9,7 +9,8 @@ biorecap_report(
   subject = NULL,
   nsentences = 2L,
   model = "llama3.1",
-  use_example_preprints = FALSE
+  use_example_preprints = FALSE,
+  ...
 )
 }
 \arguments{
@@ -22,6 +23,8 @@ biorecap_report(
 \item{model}{The model to use for generating summaries. See \code{\link[ollamar:list_models]{ollamar::list_models()}}.}
 
 \item{use_example_preprints}{Use the example preprints data included with the package instead of fetching new data from bioRxiv. For diagnostic/testing purposes only.}
+
+\item{...}{Other arguments passed to \code{\link[rmarkdown:render]{rmarkdown::render()}}.}
 }
 \value{
 Nothing; called for its side effects to produce a report.

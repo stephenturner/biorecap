@@ -81,7 +81,7 @@ get_preprints <- function(subject="all", baseurl="https://connect.biorxiv.org/bi
     dplyr::bind_rows(.id="subject") |>
     dplyr::select("subject", title="item_title", url="item_link", abstract="item_description") |>
     dplyr::mutate(dplyr::across(dplyr::everything(), trimws))
-  if (nrow(preprints)<1L) stop("Something went wrong. No papers found for subject ", subject)
+  if (nrow(preprints)<1L) stop("Something went wrong. No papers found for subject ", subject) #nocov
 
   if (clean) {
     preprints <-
@@ -229,6 +229,7 @@ tt_preprints <- function(preprints, cols=c("title", "summary"), width=c(1,3)) {
 #' @param nsentences Number of sentences to summarize each paper in.
 #' @param model The model to use for generating summaries. See [ollamar::list_models()].
 #' @param use_example_preprints Use the example preprints data included with the package instead of fetching new data from bioRxiv. For diagnostic/testing purposes only.
+#' @param ... Other arguments passed to [rmarkdown::render()].
 #'
 #' @return Nothing; called for its side effects to produce a report.
 #' @export
@@ -240,15 +241,16 @@ tt_preprints <- function(preprints, cols=c("title", "summary"), width=c(1,3)) {
 #' biorecap_report(subject=c("bioinformatics", "genomics", "synthetic_biology"),
 #'                 output_dir=output_dir)
 #' }
-biorecap_report <- function(output_dir=".", subject=NULL, nsentences=2L, model="llama3.1", use_example_preprints=FALSE) {
+biorecap_report <- function(output_dir=".", subject=NULL, nsentences=2L, model="llama3.1", use_example_preprints=FALSE, ...) {
   skeleton <- system.file("rmarkdown/templates/biorecap/skeleton/skeleton.Rmd", package="biorecap", mustWork = TRUE)
   output_dir <- normalizePath(output_dir)
   output_file <- paste0("biorecap-report-", format(Sys.time(), "%Y-%m-%d-%H%M%S"), ".html")
   output_csv <- file.path(output_dir, sub("\\.html$", ".csv", output_file))
   if (!use_example_preprints && is.null(subject)) stop("You must provide a subject. See ?subjects.")
-  if (tools::file_ext(output_file) != "html") stop("Output file must have an .html extension.")
+  if (tools::file_ext(output_file) != "html") stop("Output file must have an .html extension.") #nocov
   rmarkdown::render(input=skeleton,
                     output_file=output_file,
                     output_dir=output_dir,
-                    params=list(subject=subject, nsentences=nsentences, model=model, use_example_preprints=use_example_preprints, output_csv=output_csv))
+                    params=list(subject=subject, nsentences=nsentences, model=model, use_example_preprints=use_example_preprints, output_csv=output_csv),
+                    ...)
 }
