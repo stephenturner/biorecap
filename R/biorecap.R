@@ -111,10 +111,10 @@ get_preprints <- function(subject="all", baseurl="https://connect.biorxiv.org/bi
 #'
 add_prompt <- function(preprints, ...) {
 
-  if(!inherits(preprints, "preprints")) warning("Expecting a data frame of class 'preprints' returned from get_preprints().")
   if (!inherits(preprints, "data.frame")) stop("Expecting a data frame.")
   if (!"title" %in% colnames(preprints)) stop("Expecting a column named 'title' in the data frame.")
   if (!"abstract" %in% colnames(preprints)) stop("Expecting a column named 'abstract' in the data frame.")
+  if(!inherits(preprints, "preprints")) warning("Expecting a data frame of class 'preprints' returned from get_preprints().")
 
   preprints <-
     preprints |>
@@ -150,6 +150,7 @@ add_summary <- function(preprints, model="llama3.1") {
   if (!inherits(preprints, "data.frame")) stop("Expecting a data frame.")
   if (!"prompt" %in% colnames(preprints)) stop("Expecting a column named 'prompt' in the data frame.")
 
+  #nocov start
   suppressMessages({
     preprints <-
       preprints |>
@@ -163,6 +164,7 @@ add_summary <- function(preprints, model="llama3.1") {
 
   class(preprints) <- c("preprints_summary", class(preprints))
   return(preprints)
+  #nocov end
 }
 
 
