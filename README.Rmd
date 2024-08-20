@@ -32,7 +32,8 @@ Retrieve and summarize [bioRxiv](https://www.biorxiv.org/) preprints using a loc
 
 Install biorecap from GitHub (keep `dependencies=TRUE` to get Suggests packages needed to create the HTML report):
 
-``` r
+```{r, eval=FALSE}
+# install.packages("remotes")
 remotes::install_github("stephenturner/biorecap", dependencies=TRUE)
 ```
 
@@ -152,5 +153,19 @@ The `biorecap_report()` function runs this code in an RMarkdown template, writin
 ```{r, eval=FALSE}
 biorecap_report(output_dir=".", 
                 subject=c("bioinformatics", "genomics", "synthetic_biology"), 
+                model="llama3.1")
+```
+
+The built-in `subjects` vector contains all the available bioRxiv subjects.
+
+```{r}
+subjects
+```
+
+You could create a report for _all_ subjects like this (note, this could take some time):
+
+```{r, eval=FALSE}
+biorecap_report(output_dir=".", 
+                subject=subjects, 
                 model="llama3.1")
 ```

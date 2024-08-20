@@ -18,6 +18,7 @@ Install biorecap from GitHub (keep `dependencies=TRUE` to get Suggests
 packages needed to create the HTML report):
 
 ``` r
+# install.packages("remotes")
 remotes::install_github("stephenturner/biorecap", dependencies=TRUE)
 ```
 
@@ -205,5 +206,48 @@ current working directory.
 ``` r
 biorecap_report(output_dir=".", 
                 subject=c("bioinformatics", "genomics", "synthetic_biology"), 
+                model="llama3.1")
+```
+
+The built-in `subjects` vector contains all the available bioRxiv
+subjects.
+
+``` r
+subjects
+#>  [1] "all"                                   
+#>  [2] "animal_behavior_and_cognition"         
+#>  [3] "biochemistry"                          
+#>  [4] "bioengineering"                        
+#>  [5] "bioinformatics"                        
+#>  [6] "biophysics"                            
+#>  [7] "cancer_biology"                        
+#>  [8] "cell_biology"                          
+#>  [9] "clinical_trials"                       
+#> [10] "developmental_biology"                 
+#> [11] "ecology"                               
+#> [12] "epidemiology"                          
+#> [13] "evolutionary_biology"                  
+#> [14] "genetics"                              
+#> [15] "genomics"                              
+#> [16] "immunology"                            
+#> [17] "microbiology"                          
+#> [18] "molecular_biology"                     
+#> [19] "neuroscience"                          
+#> [20] "paleontology"                          
+#> [21] "pathology"                             
+#> [22] "pharmacology_and_toxicology"           
+#> [23] "plant_biology"                         
+#> [24] "scientific_communication_and_education"
+#> [25] "synthetic_biology"                     
+#> [26] "systems_biology"                       
+#> [27] "zoology"
+```
+
+You could create a report for *all* subjects like this (note, this could
+take some time):
+
+``` r
+biorecap_report(output_dir=".", 
+                subject=subjects, 
                 model="llama3.1")
 ```
