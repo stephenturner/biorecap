@@ -56,7 +56,8 @@
 </h2>
 <p>Install biorecap from GitHub (keep <code>dependencies=TRUE</code> to get Suggests packages needed to create the HTML report):</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu">remotes</span><span class="fu">::</span><span class="fu">install_github</span><span class="op">(</span><span class="st">"stephenturner/biorecap"</span>, dependencies<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="co"># install.packages("remotes")</span></span>
+<span><span class="fu">remotes</span><span class="fu">::</span><span class="fu">install_github</span><span class="op">(</span><span class="st">"stephenturner/biorecap"</span>, dependencies<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div>
 </div>
 <div class="section level2">
 <h2 id="usage">Usage<a class="anchor" aria-label="anchor" href="#usage"></a>
@@ -172,6 +173,41 @@
 <div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="reference/biorecap_report.html">biorecap_report</a></span><span class="op">(</span>output_dir<span class="op">=</span><span class="st">"."</span>, </span>
 <span>                subject<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"bioinformatics"</span>, <span class="st">"genomics"</span>, <span class="st">"synthetic_biology"</span><span class="op">)</span>, </span>
+<span>                model<span class="op">=</span><span class="st">"llama3.1"</span><span class="op">)</span></span></code></pre></div>
+<p>The built-in <code>subjects</code> vector contains all the available bioRxiv subjects.</p>
+<div class="sourceCode" id="cb15"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">subjects</span></span>
+<span><span class="co">#&gt;  [1] "all"                                   </span></span>
+<span><span class="co">#&gt;  [2] "animal_behavior_and_cognition"         </span></span>
+<span><span class="co">#&gt;  [3] "biochemistry"                          </span></span>
+<span><span class="co">#&gt;  [4] "bioengineering"                        </span></span>
+<span><span class="co">#&gt;  [5] "bioinformatics"                        </span></span>
+<span><span class="co">#&gt;  [6] "biophysics"                            </span></span>
+<span><span class="co">#&gt;  [7] "cancer_biology"                        </span></span>
+<span><span class="co">#&gt;  [8] "cell_biology"                          </span></span>
+<span><span class="co">#&gt;  [9] "clinical_trials"                       </span></span>
+<span><span class="co">#&gt; [10] "developmental_biology"                 </span></span>
+<span><span class="co">#&gt; [11] "ecology"                               </span></span>
+<span><span class="co">#&gt; [12] "epidemiology"                          </span></span>
+<span><span class="co">#&gt; [13] "evolutionary_biology"                  </span></span>
+<span><span class="co">#&gt; [14] "genetics"                              </span></span>
+<span><span class="co">#&gt; [15] "genomics"                              </span></span>
+<span><span class="co">#&gt; [16] "immunology"                            </span></span>
+<span><span class="co">#&gt; [17] "microbiology"                          </span></span>
+<span><span class="co">#&gt; [18] "molecular_biology"                     </span></span>
+<span><span class="co">#&gt; [19] "neuroscience"                          </span></span>
+<span><span class="co">#&gt; [20] "paleontology"                          </span></span>
+<span><span class="co">#&gt; [21] "pathology"                             </span></span>
+<span><span class="co">#&gt; [22] "pharmacology_and_toxicology"           </span></span>
+<span><span class="co">#&gt; [23] "plant_biology"                         </span></span>
+<span><span class="co">#&gt; [24] "scientific_communication_and_education"</span></span>
+<span><span class="co">#&gt; [25] "synthetic_biology"                     </span></span>
+<span><span class="co">#&gt; [26] "systems_biology"                       </span></span>
+<span><span class="co">#&gt; [27] "zoology"</span></span></code></pre></div>
+<p>You could create a report for <em>all</em> subjects like this (note, this could take some time):</p>
+<div class="sourceCode" id="cb16"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="reference/biorecap_report.html">biorecap_report</a></span><span class="op">(</span>output_dir<span class="op">=</span><span class="st">"."</span>, </span>
+<span>                subject<span class="op">=</span><span class="va">subjects</span>, </span>
 <span>                model<span class="op">=</span><span class="st">"llama3.1"</span><span class="op">)</span></span></code></pre></div>
 </div>
 </div>
