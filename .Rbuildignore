@@ -11,3 +11,5 @@ biorecap-report-.*\.html
 ^pkgdown$
 ^\.github$
 ^CITATION\.cff$
+.*\.drawio
+.*\.drawio\.bkp

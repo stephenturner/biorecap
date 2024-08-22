@@ -6,6 +6,8 @@
 \alias{biorecap-package}
 \title{biorecap: Retrieve and summarize bioRxiv preprints with a local LLM using ollama}
 \description{
+\if{html}{\figure{logo.png}{options: style='float: right' alt='logo' width='120'}}
+
 Retrieve and summarize bioRxiv preprints with a local LLM using ollama.
 }
 \seealso{

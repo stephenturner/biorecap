@@ -3,3 +3,5 @@ scratch.R
 **skeleton*.html
 biorecap-report*.html
 docs
+*.drawio.bkp
+*.drawio.dtmp

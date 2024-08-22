@@ -1,16 +1,22 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-# biorecap
+# biorecap <a href='https://github.com/stephenturner/biorecap'><img src='man/figures/logo.png' align="right" height="250" /></a>
 
 <!-- badges: start -->
 
 [![R-CMD-check](https://github.com/stephenturner/biorecap/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/stephenturner/biorecap/actions/workflows/R-CMD-check.yaml)
+[![arXiv](https://img.shields.io/badge/DOI-10.48550/arXiv.2408.11707-AD1429)](https://doi.org/10.48550/arXiv.2408.11707)
+![biorecap-r-universe](https://stephenturner.r-universe.dev/badges/biorecap)
 <!-- badges: end -->
 
 Retrieve and summarize [bioRxiv](https://www.biorxiv.org/) preprints
 using a local LLM with [Ollama](https://ollama.com/) via
 [ollamar](https://cran.r-project.org/package=ollamar).
+
+Turner, S. D. (2024). biorecap: an R package for summarizing bioRxiv
+preprints with a local LLM. *arXiv*, 2408.11707.
+<https://doi.org/10.48550/arXiv.2408.11707>.
 
 ## Installation
 
