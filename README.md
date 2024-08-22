@@ -7,7 +7,7 @@
 
 [![R-CMD-check](https://github.com/stephenturner/biorecap/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/stephenturner/biorecap/actions/workflows/R-CMD-check.yaml)
 [![arXiv](https://img.shields.io/badge/DOI-10.48550/arXiv.2408.11707-AD1429)](https://doi.org/10.48550/arXiv.2408.11707)
-![biorecap-r-universe](https://stephenturner.r-universe.dev/badges/biorecap)
+[![biorecap-r-universe](https://stephenturner.r-universe.dev/badges/biorecap)](https://stephenturner.r-universe.dev/biorecap)
 <!-- badges: end -->
 
 Retrieve and summarize [bioRxiv](https://www.biorxiv.org/) preprints
