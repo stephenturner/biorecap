@@ -1,6 +1,6 @@
 Package: biorecap
 Title: Retrieve and summarize bioRxiv preprints with a local LLM using ollama
-Version: 0.1.0
+Version: 0.1.1
 Authors@R: 
     person("Stephen", "Turner", , "vustephen@gmail.com", role = c("aut", "cre"),
            comment = c(ORCID = "0000-0001-9140-9028"))
@@ -12,7 +12,7 @@ Depends:
     R (>= 4.2.0)
 Imports: 
     dplyr,
-    ollamar,
+    ollamar (>= 1.2.1),
     rlang,
     rmarkdown,
     tidyRSS,

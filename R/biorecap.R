@@ -154,7 +154,7 @@ add_summary <- function(preprints, model="llama3.1") {
   suppressMessages({
     preprints <-
       preprints |>
-      dplyr::mutate("summary" = as.vector(sapply(.data$prompt, \(x) ollamar::generate(model=model, prompt=x, output="text")$response)))
+      dplyr::mutate("summary" = as.vector(sapply(.data$prompt, \(x) ollamar::generate(model=model, prompt=x, output="text"))))
   })
 
   # Remove newlines anywhere within any text
