@@ -4,7 +4,7 @@
 \alias{add_summary}
 \title{Generate a summary from a data frame of prompts}
 \usage{
-add_summary(preprints, model = "llama3.1")
+add_summary(preprints, model = "llama3.2")
 }
 \arguments{
 \item{preprints}{Output from \code{\link[=get_preprints]{get_preprints()}} followed by \code{\link[=add_prompt]{add_prompt()}}.}

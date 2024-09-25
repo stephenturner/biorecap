@@ -2,7 +2,7 @@
 % Please edit documentation in R/biorecap.R
 \name{biorecap_report}
 \alias{biorecap_report}
-\title{Create a report from bioRxiv preprints}
+\title{Create a report from bioRxiv/medRxiv preprints}
 \usage{
 biorecap_report(
   output_dir = ".",
@@ -22,7 +22,7 @@ biorecap_report(
 
 \item{model}{The model to use for generating summaries. See \code{\link[ollamar:list_models]{ollamar::list_models()}}.}
 
-\item{use_example_preprints}{Use the example preprints data included with the package instead of fetching new data from bioRxiv. For diagnostic/testing purposes only.}
+\item{use_example_preprints}{Use the example preprints data included with the package instead of fetching new data from bioRxiv/medRxiv. For diagnostic/testing purposes only.}
 
 \item{...}{Other arguments passed to \code{\link[rmarkdown:render]{rmarkdown::render()}}.}
 }
@@ -30,7 +30,7 @@ biorecap_report(
 Nothing; called for its side effects to produce a report.
 }
 \description{
-Create a report from bioRxiv preprints
+Create a report from bioRxiv/medRxiv preprints
 }
 \examples{
 \dontrun{

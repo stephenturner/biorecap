@@ -2,29 +2,23 @@
 % Please edit documentation in R/biorecap.R
 \name{get_preprints}
 \alias{get_preprints}
-\title{Get bioRxiv preprints}
+\title{Get bioRxiv/medRxiv preprints}
 \usage{
-get_preprints(
-  subject = "all",
-  baseurl = "https://connect.biorxiv.org/biorxiv_xml.php?subject=",
-  clean = TRUE
-)
+get_preprints(subject = "all", clean = TRUE)
 }
 \arguments{
-\item{subject}{A character vector of valid biorxiv subjects. See \link{subjects}.}
-
-\item{baseurl}{The base URL for the biorxiv RSS feed. Default is \verb{https://connect.biorxiv.org/biorxiv_xml.php?subject=}. Do not change unless you know what you are doing.}
+\item{subject}{A character vector of valid bioRxiv and/or medRxiv subjects. See \link{subjects}.}
 
 \item{clean}{Logical; try to strip out graphical abstract information? If TRUE, this strips away any text between \code{O_FIG} and \code{C_FIG}, and the words \verb{graphical abstract} from the abstract text in the RSS feed.}
 }
 \value{
-A data frame of bioRxiv preprints.
+A data frame of preprints from bioRxiv and/or medRxiv.
 }
 \description{
-Get bioRxiv preprints
+Get bioRxiv/medRxiv preprints
 }
 \examples{
-preprints <- get_preprints(subject=c("bioinformatics", "genomics"))
+preprints <- get_preprints(subject=c("bioinformatics", "Public_and_Global_Health"))
 preprints
 
 }
