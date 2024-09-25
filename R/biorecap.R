@@ -44,7 +44,7 @@ build_prompt_subject <- function(subject,
                                  title,
                                  summary,
                                  nsentences=5L,
-                                 instructions=c("I am giving you information about preprints published in bioRxiv recently.",
+                                 instructions=c("I am giving you information about recent bioRxiv/medRxiv preprints.",
                                                 "I'll give you the subject, preprint titles, and short summary of each paper.",
                                                 "Please provide a general summary new advances in this subject/field in general.",
                                                 "Provide this summary of the field in as many sentences as I instruct.",
@@ -57,31 +57,52 @@ build_prompt_subject <- function(subject,
   return(prompt)
 }
 
-#' Get bioRxiv preprints
+#' Get bioRxiv/medRxiv preprints
 #'
-#' @param subject A character vector of valid biorxiv subjects. See [subjects].
-#' @param baseurl The base URL for the biorxiv RSS feed. Default is `https://connect.biorxiv.org/biorxiv_xml.php?subject=`. Do not change unless you know what you are doing.
+#' @param subject A character vector of valid bioRxiv and/or medRxiv subjects. See [subjects].
 #' @param clean Logical; try to strip out graphical abstract information? If TRUE, this strips away any text between `O_FIG` and `C_FIG`, and the words `graphical abstract` from the abstract text in the RSS feed.
 #'
-#' @return A data frame of bioRxiv preprints.
+#' @return A data frame of preprints from bioRxiv and/or medRxiv.
 #' @export
 #'
 #' @examples
-#' preprints <- get_preprints(subject=c("bioinformatics", "genomics"))
+#' preprints <- get_preprints(subject=c("bioinformatics", "Public_and_Global_Health"))
 #' preprints
 #'
-get_preprints <- function(subject="all", baseurl="https://connect.biorxiv.org/biorxiv_xml.php?subject=", clean=TRUE) {
+get_preprints <- function(subject="all", clean=TRUE) {
 
+  subject <- tolower(subject)
   stopifnot(is.character(subject))
-  if (any(!subject %in% biorecap::subjects)) stop("Invalid subject. See ?subjects for valid choices.")
+  if (any(!subject %in% as.vector(unlist(biorecap::subjects)))) stop("Invalid subject. See ?subjects for valid choices.")
 
-  preprints <-
-    lapply(subject, \(x) suppressMessages(preprints <- tidyRSS::tidyfeed(paste0(baseurl, x)))) |>
-    stats::setNames(subject) |>
-    dplyr::bind_rows(.id="subject") |>
-    dplyr::select("subject", title="item_title", url="item_link", abstract="item_description") |>
-    dplyr::mutate(dplyr::across(dplyr::everything(), trimws))
-  if (nrow(preprints)<1L) stop("Something went wrong. No papers found for subject ", subject) #nocov
+  preprints <- list()
+
+  subject_bio <- subject[subject %in% biorecap::subjects$biorxiv]
+  if (length(subject_bio)>0) {
+    preprints$bio <-
+      lapply(subject_bio, \(x) suppressMessages(preprints <- tidyRSS::tidyfeed(paste0("https://connect.biorxiv.org/biorxiv_xml.php?subject=", x)))) |>
+      stats::setNames(subject_bio) |>
+      dplyr::bind_rows(.id="subject") |>
+      dplyr::select("subject", title="item_title", url="item_link", abstract="item_description") |>
+      dplyr::mutate(dplyr::across(dplyr::everything(), trimws)) |>
+      dplyr::mutate("source"="bioRxiv", .before=1)
+    if (nrow(preprints$bio)<1L) stop("Something went wrong. No papers found for subject ", subject) #nocov
+  }
+
+
+  subject_med <- subject[subject %in% biorecap::subjects$medrxiv]
+  if (length(subject_med)>0) {
+    preprints$med <-
+      lapply(subject_med, \(x) suppressMessages(preprints <- tidyRSS::tidyfeed(paste0("https://connect.medrxiv.org/medrxiv_xml.php?subject=", x)))) |>
+      stats::setNames(subject_med) |>
+      dplyr::bind_rows(.id="subject") |>
+      dplyr::select("subject", title="item_title", url="item_link", abstract="item_description") |>
+      dplyr::mutate(dplyr::across(dplyr::everything(), trimws)) |>
+      dplyr::mutate("source"="medRxiv", .before=1)
+    if (nrow(preprints$med)<1L) stop("Something went wrong. No papers found for subject ", subject) #nocov
+  }
+
+  preprints <- dplyr::bind_rows(preprints)
 
   if (clean) {
     preprints <-
@@ -101,7 +122,7 @@ get_preprints <- function(subject="all", baseurl="https://connect.biorxiv.org/bi
 #'
 #' @seealso [build_prompt_preprint()]
 #'
-#' @return A data frame of bioRxiv preprints with a prompt added.
+#' @return A data frame of preprints with a prompt added.
 #' @export
 #'
 #' @examples
@@ -144,7 +165,7 @@ add_prompt <- function(preprints, ...) {
 #' preprints
 #' }
 #'
-add_summary <- function(preprints, model="llama3.1") {
+add_summary <- function(preprints, model="llama3.2") {
 
   if (!inherits(preprints, "preprints_prompt")) warning("Expecting a tibble of class 'preprints_prompt' returned from get_preprints() |> add_prompt().")
   if (!inherits(preprints, "data.frame")) stop("Expecting a data frame.")
@@ -222,13 +243,13 @@ tt_preprints <- function(preprints, cols=c("title", "summary"), width=c(1,3)) {
 }
 
 
-#' Create a report from bioRxiv preprints
+#' Create a report from bioRxiv/medRxiv preprints
 #'
 #' @param output_dir Directory to save the report.
 #' @param subject Character vector of subjects to include in the report.
 #' @param nsentences Number of sentences to summarize each paper in.
 #' @param model The model to use for generating summaries. See [ollamar::list_models()].
-#' @param use_example_preprints Use the example preprints data included with the package instead of fetching new data from bioRxiv. For diagnostic/testing purposes only.
+#' @param use_example_preprints Use the example preprints data included with the package instead of fetching new data from bioRxiv/medRxiv. For diagnostic/testing purposes only.
 #' @param ... Other arguments passed to [rmarkdown::render()].
 #'
 #' @return Nothing; called for its side effects to produce a report.
