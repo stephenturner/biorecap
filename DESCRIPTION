@@ -1,10 +1,10 @@
 Package: biorecap
-Title: Retrieve and summarize bioRxiv preprints with a local LLM using ollama
-Version: 0.1.1
+Title: Retrieve and summarize bioRxiv and medRxiv preprints with a local LLM using ollama
+Version: 0.2.0
 Authors@R: 
     person("Stephen", "Turner", , "vustephen@gmail.com", role = c("aut", "cre"),
            comment = c(ORCID = "0000-0001-9140-9028"))
-Description: Retrieve and summarize bioRxiv preprints with a local LLM using ollama.
+Description: Retrieve and summarize bioRxiv and medRxiv preprints with a local LLM using ollama.
 License: MIT + file LICENSE
 URL: https://stephenturner.github.io/biorecap/
 BugReports: https://github.com/stephenturner/biorecap/issues
