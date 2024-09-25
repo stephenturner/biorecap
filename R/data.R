@@ -4,7 +4,7 @@
 #'
 #' @references <https://www.biorxiv.org/alertsrss>
 #'
-#' @format A character vector
+#' @format A list of character vectors of subjects, one for bioRxiv, one for medRxiv.
 #'
 #' @examples
 #' subjects

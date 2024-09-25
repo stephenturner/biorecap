@@ -12,7 +12,7 @@ add_prompt(preprints, ...)
 \item{...}{Additional arguments to \code{\link[=build_prompt_preprint]{build_prompt_preprint()}}.}
 }
 \value{
-A data frame of bioRxiv preprints with a prompt added.
+A data frame of preprints with a prompt added.
 }
 \description{
 Add prompt to a data frame of preprints

@@ -5,7 +5,7 @@
 \alias{subjects}
 \title{bioRxiv subjects}
 \format{
-A character vector
+A list of character vectors of subjects, one for bioRxiv, one for medRxiv.
 }
 \usage{
 subjects

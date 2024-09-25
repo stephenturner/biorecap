@@ -9,8 +9,7 @@ build_prompt_subject(
   title,
   summary,
   nsentences = 5L,
-  instructions =
-    c("I am giving you information about preprints published in bioRxiv recently.",
+  instructions = c("I am giving you information about recent bioRxiv/medRxiv preprints.",
     "I'll give you the subject, preprint titles, and short summary of each paper.",
     "Please provide a general summary new advances in this subject/field in general.",
     "Provide this summary of the field in as many sentences as I instruct.",

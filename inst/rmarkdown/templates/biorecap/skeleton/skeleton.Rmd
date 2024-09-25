@@ -1,5 +1,5 @@
 ---
-title: "bioRxiv summary"
+title: "biorecap summary"
 date: "`r format(Sys.Date(), '%B %d, %Y')`"
 output: 
   html_document: 
@@ -44,7 +44,8 @@ if (!is.null(output_csv)) {
 
 ```{r write-report-content, results='asis'}
 for (i in unique(pp$subject)) {
-  cat("##", gsub("_", " ", i), "\n\n")
+  source <- pp$source[pp$subject==i] |> unique() |> paste(collapse=", ")
+  cat("##", sprintf("%s (%s)", gsub("_", " ", i), source), "\n\n")
   pp |> 
     dplyr::filter(subject==i) |> 
     tt_preprints() |> 
