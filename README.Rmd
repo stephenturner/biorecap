@@ -28,7 +28,7 @@ knitr::opts_chunk$set(
 [![biorecap-r-universe](https://stephenturner.r-universe.dev/badges/biorecap)](https://stephenturner.r-universe.dev/biorecap)
 <!-- badges: end -->
 
-Retrieve and summarize [bioRxiv](https://www.biorxiv.org/) preprints using a local LLM with [Ollama](https://ollama.com/) via [ollamar](https://cran.r-project.org/package=ollamar). 
+Retrieve and summarize [bioRxiv](https://www.biorxiv.org/) and [medRxiv](https://www.medrxiv.org/) preprints using a local LLM with [Ollama](https://ollama.com/) via [ollamar](https://cran.r-project.org/package=ollamar). 
 
 Turner, S. D. (2024). biorecap: an R package for summarizing bioRxiv preprints with a local LLM. _arXiv_, 2408.11707. https://doi.org/10.48550/arXiv.2408.11707. 
 
@@ -73,43 +73,44 @@ list_models()
 ```
 
 ```
-#> # A tibble: 3 × 4
-#>   name            model           parameter_size quantization_level
-#>   <chr>           <chr>           <chr>          <chr>             
-#> 1 gemma2:latest   gemma2:latest   9.2B           Q4_0              
-#> 2 llama3.1:latest llama3.1:latest 8.0B           Q4_0              
-#> 3 llama3.1:70b    llama3.1:70b    70.6B          Q4_0           
+             name   size parameter_size quantization_level            modified
+1   gemma2:latest 5.4 GB           9.2B               Q4_0 2024-08-07T07:35:15
+3    llama3.1:70b  40 GB          70.6B               Q4_0 2024-07-24T10:57:08
+4 llama3.1:latest 4.7 GB           8.0B               Q4_0 2024-07-31T09:38:38
+5 llama3.2:latest   2 GB           3.2B             Q4_K_M 2024-09-25T14:54:23
+6     phi3:latest 2.2 GB           3.8B               Q4_0 2024-08-28T04:37:58      
 ```
 
-Write an HTML report containing summaries of recent preprints in select subject areas to the current working directory.
+Write an HTML report containing summaries of recent preprints in select subject areas to the current working directory. You can include both bioRxiv and medRxiv subjects, and biorecap will know which RSS feed to use.
 
 ```{r, eval=FALSE}
 biorecap_report(output_dir=".", 
-                subject=c("bioinformatics", "genomics", "synthetic_biology"), 
+                subject=c("bioinformatics", "infectious_diseases"), 
                 model="llama3.1")
 ```
 
-Example HTML report generated from the bioRxiv RSS feed on August 6, 2024:
+Example HTML report generated from bioRxiv (bioinformatics) and infectious diseases (medRxiv) subjects on September 25, 2024:
 
 ```{r, echo=FALSE}
-knitr::include_graphics(here::here("man/figures/report_screenshot.png"))
+knitr::include_graphics(here::here("man/figures/report_screenshot.jpg"))
 ```
 
 
 ### Details
 
-The `get_preprints()` function retrieves preprints from bioRxiv's RSS feeds. You pass one or more subjects to the `subject` argument. 
+The `get_preprints()` function retrieves preprints from the RSS feed of either bioRxiv or medRxiv, based on the subject you provided. You pass one or more subjects to the `subject` argument. 
 
 ```{r, eval=FALSE}
 pp <- get_preprints(subject=c("bioinformatics", 
-                              "genomics", 
-                              "synthetic_biology"))
-pp
+                              "infectious_diseases"))
+head(pp)
+tail(pp)
 ```
 
 ```{r, echo=FALSE}
 pp <- example_preprints
-pp |> dplyr::select(-prompt, -summary)
+pp |> dplyr::select(-prompt, -summary) |> head()
+pp |> dplyr::select(-prompt, -summary) |> tail()
 ```
 
 The `add_prompt()` function adds a prompt to each preprint that will be used to prompt the model.
@@ -137,9 +138,9 @@ The `add_summary()` function uses a locally running LLM available through Ollama
 
 ```{r, eval=FALSE}
 pp <- 
-  get_preprints(subject=c("bioinformatics", "genomics", "synthetic_biology")) |> 
+  get_preprints(subject=c("bioinformatics", "infectious_diseases")) |> 
   add_prompt() |> 
-  add_summary(model="llama3.1")
+  add_summary(model="llama3.2")
 ```
 
 Let's take a look at the results:
@@ -156,14 +157,15 @@ The `biorecap_report()` function runs this code in an RMarkdown template, writin
 
 ```{r, eval=FALSE}
 biorecap_report(output_dir=".", 
-                subject=c("bioinformatics", "genomics", "synthetic_biology"), 
-                model="llama3.1")
+                subject=c("bioinformatics", "infectious_diseases"), 
+                model="llama3.2")
 ```
 
-The built-in `subjects` vector contains all the available bioRxiv subjects.
+The built-in `subjects` is a list with vectors containing all the available bioRxiv and medRxiv subjects.
 
 ```{r}
-subjects
+subjects$biorxiv
+subjects$medrxiv
 ```
 
 You could create a report for _all_ subjects like this (note, this could take some time):
@@ -171,5 +173,5 @@ You could create a report for _all_ subjects like this (note, this could take so
 ```{r, eval=FALSE}
 biorecap_report(output_dir=".", 
                 subject=subjects, 
-                model="llama3.1")
+                model="llama3.2")
 ```
