@@ -7,7 +7,7 @@
 
     <a class="navbar-brand me-2" href="../index.html">biorecap</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.1.1</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.2.0</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -28,7 +28,7 @@
 <div class="row">
   <main id="main" class="col-md-9"><div class="page-header">
       <img src="../logo.png" class="logo" alt=""><h1>Add prompt to a data frame of preprints</h1>
-      <small class="dont-index">Source: <a href="https://github.com/stephenturner/biorecap/blob/v0.1.1/R/biorecap.R" class="external-link"><code>R/biorecap.R</code></a></small>
+      <small class="dont-index">Source: <a href="https://github.com/stephenturner/biorecap/blob/main/R/biorecap.R" class="external-link"><code>R/biorecap.R</code></a></small>
       <div class="d-none name"><code>add_prompt.Rd</code></div>
     </div>
 
@@ -55,7 +55,7 @@
 </dl></div>
     <div class="section level2">
     <h2 id="value">Value<a class="anchor" aria-label="anchor" href="#value"></a></h2>
-    <p>A data frame of bioRxiv preprints with a prompt added.</p>
+    <p>A data frame of preprints with a prompt added.</p>
     </div>
     <div class="section level2">
     <h2 id="see-also">See also<a class="anchor" aria-label="anchor" href="#see-also"></a></h2>
@@ -67,19 +67,19 @@
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="va">preprints</span> <span class="op">&lt;-</span> <span class="fu"><a href="get_preprints.html">get_preprints</a></span><span class="op">(</span>subject<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"bioinformatics"</span>, <span class="st">"genomics"</span><span class="op">)</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="va">preprints</span> <span class="op">&lt;-</span> <span class="fu">add_prompt</span><span class="op">(</span><span class="va">preprints</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="va">preprints</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 60 × 5</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    subject        title                                    url   abstract prompt</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>          <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                                    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 1</span> bioinformatics <span style="color: #949494;">"</span>PHIStruct: Improving phage-host intera… http… Recent … <span style="color: #949494;">"</span>I am…</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 2</span> bioinformatics <span style="color: #949494;">"</span>BGC Atlas: A Web Resource for Explorin… http… Seconda… <span style="color: #949494;">"</span>I am…</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 3</span> bioinformatics <span style="color: #949494;">"</span>Enrichment analysis for spatial and si… http… Imaging… <span style="color: #949494;">"</span>I am…</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 4</span> bioinformatics <span style="color: #949494;">"</span>SpatialLeiden - Spatially-aware Leiden… http… Cluster… <span style="color: #949494;">"</span>I am…</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 5</span> bioinformatics <span style="color: #949494;">"</span>Protein sequence classification using … http… Protein… <span style="color: #949494;">"</span>I am…</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 6</span> bioinformatics <span style="color: #949494;">"</span>A multi-omics approach to identify del… http… Crops l… <span style="color: #949494;">"</span>I am…</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 7</span> bioinformatics <span style="color: #949494;">"</span>Automatic crystal identification for c… http… Crystal… <span style="color: #949494;">"</span>I am…</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 8</span> bioinformatics <span style="color: #949494;">"</span>Solving the \"Blind men and the elepha… http… Biologi… <span style="color: #949494;">"</span>I am…</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 9</span> bioinformatics <span style="color: #949494;">"</span>Evolutionary mismatch between nuclear … http… Serrano… <span style="color: #949494;">"</span>I am…</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">10</span> bioinformatics <span style="color: #949494;">"</span>Predicting small-molecule inhibition o… http… Protein… <span style="color: #949494;">"</span>I am…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 60 × 6</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    source  subject        title                            url   abstract prompt</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>          <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                            <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 1</span> bioRxiv bioinformatics SeaMoon: Prediction of molecula… http… How pro… <span style="color: #949494;">"</span>I am…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 2</span> bioRxiv bioinformatics Clustering individuals using IN… http… Motivat… <span style="color: #949494;">"</span>I am…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 3</span> bioRxiv bioinformatics INSPIRE: interpretable, flexibl… http… Recent … <span style="color: #949494;">"</span>I am…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 4</span> bioRxiv bioinformatics MedGraphNet: Leveraging Multi-R… http… Genetic… <span style="color: #949494;">"</span>I am…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 5</span> bioRxiv bioinformatics High-throughput bacterial aggre… http… The com… <span style="color: #949494;">"</span>I am…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 6</span> bioRxiv bioinformatics scParadise: Tunable highly accu… http… scRNA-s… <span style="color: #949494;">"</span>I am…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 7</span> bioRxiv bioinformatics Camera Paths, Modeling, and Ima… http… The enh… <span style="color: #949494;">"</span>I am…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 8</span> bioRxiv bioinformatics dScaff - an automatic bioinform… http… Rapid e… <span style="color: #949494;">"</span>I am…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 9</span> bioRxiv bioinformatics Jaeger: an accurate and fast de… http… Abstrac… <span style="color: #949494;">"</span>I am…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">10</span> bioRxiv bioinformatics AI-Augmented R-Group Exploratio… http… Efficie… <span style="color: #949494;">"</span>I am…</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ 50 more rows</span></span>
 <span class="r-in"><span></span></span>
 </code></pre></div>
@@ -93,7 +93,7 @@
 </div>
 
 <div class="pkgdown-footer-right">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.1.0.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.1.1.</p>
 </div>
 
     </footer></div>

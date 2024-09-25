@@ -7,7 +7,7 @@
 
     <a class="navbar-brand me-2" href="../index.html">biorecap</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.1.1</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.2.0</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -28,7 +28,7 @@
 <div class="row">
   <main id="main" class="col-md-9"><div class="page-header">
       <img src="../logo.png" class="logo" alt=""><h1>bioRxiv subjects</h1>
-      <small class="dont-index">Source: <a href="https://github.com/stephenturner/biorecap/blob/v0.1.1/R/data.R" class="external-link"><code>R/data.R</code></a></small>
+      <small class="dont-index">Source: <a href="https://github.com/stephenturner/biorecap/blob/main/R/data.R" class="external-link"><code>R/data.R</code></a></small>
       <div class="d-none name"><code>subjects.Rd</code></div>
     </div>
 
@@ -43,7 +43,7 @@
 
     <div class="section level2">
     <h2 id="format">Format<a class="anchor" aria-label="anchor" href="#format"></a></h2>
-    <p>A character vector</p>
+    <p>A list of character vectors of subjects, one for bioRxiv, one for medRxiv.</p>
     </div>
     <div class="section level2">
     <h2 id="references">References<a class="anchor" aria-label="anchor" href="#references"></a></h2>
@@ -53,6 +53,7 @@
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="va">subjects</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $biorxiv</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  [1] "all"                                   </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  [2] "animal_behavior_and_cognition"         </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  [3] "biochemistry"                          </span>
@@ -80,6 +81,63 @@
 <span class="r-out co"><span class="r-pr">#&gt;</span> [25] "synthetic_biology"                     </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [26] "systems_biology"                       </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [27] "zoology"                               </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $medrxiv</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [1] "all"                                         </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [2] "addiction_medicine"                          </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [3] "allergy_and_immunology"                      </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [4] "anesthesia"                                  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [5] "cardiovascular_medicine"                     </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [6] "dentistry_and_oral_medicine"                 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [7] "dermatology"                                 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [8] "dermatology"                                 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [9] "endocrinology"                               </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [10] "epidemiology"                                </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [11] "ecology"                                     </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [12] "epidemiology"                                </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [13] "forensic_medicine"                           </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [14] "gastroenterology"                            </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [15] "genetic_and_genomic_medicine"                </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [16] "geriatric_medicine"                          </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [17] "health_economics"                            </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [18] "health_informatics"                          </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [19] "health_policy"                               </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [20] "health_systems_and_quality_improvement"      </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [21] "hematology"                                  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [22] "hivaids"                                     </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [23] "infectious_diseases"                         </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [24] "intensive_care_and_critical_care_medicine"   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [25] "medical_education"                           </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [26] "medical_ethics"                              </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [27] "nephrology"                                  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [28] "neurology"                                   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [29] "nursing"                                     </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [30] "nutrition"                                   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [31] "obstetrics_and_gynecology"                   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [32] "occupational_and_environmental_health"       </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [33] "oncology"                                    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [34] "ophthalmology"                               </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [35] "orthopedics"                                 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [36] "otolaryngology"                              </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [37] "pain_medicine"                               </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [38] "palliative_medicine"                         </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [39] "pathology"                                   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [40] "pediatrics"                                  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [41] "pharmacology_and_therapeutics"               </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [42] "primary_care_research"                       </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [43] "psychiatry_and_clinical_psychology"          </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [44] "public_and_global_health"                    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [45] "radiology_and_imaging"                       </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [46] "rehabilitation_medicine_and_physical_therapy"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [47] "respiratory_medicine"                        </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [48] "rheumatology"                                </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [49] "sexual_and_reproductive_health"              </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [50] "sports_medicine"                             </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [51] "surgery"                                     </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [52] "toxicology"                                  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [53] "transplantation"                             </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [54] "urology"                                     </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-in"><span></span></span>
 </code></pre></div>
     </div>
@@ -92,7 +150,7 @@
 </div>
 
 <div class="pkgdown-footer-right">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.1.0.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.1.1.</p>
 </div>
 
     </footer></div>
