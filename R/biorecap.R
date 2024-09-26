@@ -151,6 +151,7 @@ add_prompt <- function(preprints, ...) {
 #'
 #' @param preprints Output from [get_preprints()] followed by [add_prompt()].
 #' @param model A model available to Ollama (run `ollamar::list_models()`) to see what's available.
+#' @param host The base URL to use. Default is `NULL`, which uses Ollama's default base URL.
 #'
 #' @return A tibble, with a response column added.
 #' @export
@@ -165,7 +166,7 @@ add_prompt <- function(preprints, ...) {
 #' preprints
 #' }
 #'
-add_summary <- function(preprints, model="llama3.2") {
+add_summary <- function(preprints, model="llama3.2", host=NULL) {
 
   if (!inherits(preprints, "preprints_prompt")) warning("Expecting a tibble of class 'preprints_prompt' returned from get_preprints() |> add_prompt().")
   if (!inherits(preprints, "data.frame")) stop("Expecting a data frame.")
@@ -175,7 +176,7 @@ add_summary <- function(preprints, model="llama3.2") {
   suppressMessages({
     preprints <-
       preprints |>
-      dplyr::mutate("summary" = as.vector(sapply(.data$prompt, \(x) ollamar::generate(model=model, prompt=x, output="text"))))
+      dplyr::mutate("summary" = as.vector(sapply(.data$prompt, \(x) ollamar::generate(model=model, prompt=x, output="text", host=host))))
   })
 
   # Remove newlines anywhere within any text
@@ -249,6 +250,7 @@ tt_preprints <- function(preprints, cols=c("title", "summary"), width=c(1,3)) {
 #' @param subject Character vector of subjects to include in the report.
 #' @param nsentences Number of sentences to summarize each paper in.
 #' @param model The model to use for generating summaries. See [ollamar::list_models()].
+#' @param host The base URL to use. Default is `NULL`, which uses Ollama's default base URL.
 #' @param use_example_preprints Use the example preprints data included with the package instead of fetching new data from bioRxiv/medRxiv. For diagnostic/testing purposes only.
 #' @param ... Other arguments passed to [rmarkdown::render()].
 #'
@@ -262,7 +264,7 @@ tt_preprints <- function(preprints, cols=c("title", "summary"), width=c(1,3)) {
 #' biorecap_report(subject=c("bioinformatics", "genomics", "synthetic_biology"),
 #'                 output_dir=output_dir)
 #' }
-biorecap_report <- function(output_dir=".", subject=NULL, nsentences=2L, model="llama3.1", use_example_preprints=FALSE, ...) {
+biorecap_report <- function(output_dir=".", subject=NULL, nsentences=2L, model="llama3.1", host = NULL, use_example_preprints=FALSE, ...) {
   skeleton <- system.file("rmarkdown/templates/biorecap/skeleton/skeleton.Rmd", package="biorecap", mustWork = TRUE)
   output_dir <- normalizePath(output_dir)
   output_file <- paste0("biorecap-report-", format(Sys.time(), "%Y-%m-%d-%H%M%S"), ".html")
@@ -272,6 +274,6 @@ biorecap_report <- function(output_dir=".", subject=NULL, nsentences=2L, model="
   rmarkdown::render(input=skeleton,
                     output_file=output_file,
                     output_dir=output_dir,
-                    params=list(subject=subject, nsentences=nsentences, model=model, use_example_preprints=use_example_preprints, output_csv=output_csv),
+                    params=list(subject=subject, nsentences=nsentences, model=model, host=host, use_example_preprints=use_example_preprints, output_csv=output_csv),
                     ...)
 }
