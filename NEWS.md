@@ -1,3 +1,8 @@
+# biorecap 0.2.1
+
+- Added a `host` argument to `biorecap_report()` and `add_summary()` that gets passed to `ollamar::generate()`, allowing the user to choose the host for ollama. By default, `host=NULL` uses ollama's default base URL (using the local ollama server). This can be used to connect to a llama server running remotely or within a firewalled network (fixes #7).
+- Updated tests.
+
 # biorecap 0.2.0
 
 - Added medRxiv support. The `get_preprints()` function will now pull from either the bioRxiv or medRxiv RSS feed depending on the subject passed to it. All downstream functions and reporting updated to reflect this change (fixes #5).
