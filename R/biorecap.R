@@ -264,7 +264,7 @@ tt_preprints <- function(preprints, cols=c("title", "summary"), width=c(1,3)) {
 #' biorecap_report(subject=c("bioinformatics", "genomics", "synthetic_biology"),
 #'                 output_dir=output_dir)
 #' }
-biorecap_report <- function(output_dir=".", subject=NULL, nsentences=2L, model="llama3.1", host = NULL, use_example_preprints=FALSE, ...) {
+biorecap_report <- function(output_dir=".", subject=NULL, nsentences=2L, model="llama3.2", host = NULL, use_example_preprints=FALSE, ...) {
   skeleton <- system.file("rmarkdown/templates/biorecap/skeleton/skeleton.Rmd", package="biorecap", mustWork = TRUE)
   output_dir <- normalizePath(output_dir)
   output_file <- paste0("biorecap-report-", format(Sys.time(), "%Y-%m-%d-%H%M%S"), ".html")

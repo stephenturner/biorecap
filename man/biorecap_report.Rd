@@ -8,7 +8,7 @@ biorecap_report(
   output_dir = ".",
   subject = NULL,
   nsentences = 2L,
-  model = "llama3.1",
+  model = "llama3.2",
   host = NULL,
   use_example_preprints = FALSE,
   ...
