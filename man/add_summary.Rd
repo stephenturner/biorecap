@@ -4,12 +4,14 @@
 \alias{add_summary}
 \title{Generate a summary from a data frame of prompts}
 \usage{
-add_summary(preprints, model = "llama3.2")
+add_summary(preprints, model = "llama3.2", host = NULL)
 }
 \arguments{
 \item{preprints}{Output from \code{\link[=get_preprints]{get_preprints()}} followed by \code{\link[=add_prompt]{add_prompt()}}.}
 
 \item{model}{A model available to Ollama (run \code{ollamar::list_models()}) to see what's available.}
+
+\item{host}{The base URL to use. Default is \code{NULL}, which uses Ollama's default base URL.}
 }
 \value{
 A tibble, with a response column added.
