@@ -7,7 +7,7 @@
 
     <a class="navbar-brand me-2" href="../index.html">biorecap</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.2.0</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.2.1</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -28,9 +28,14 @@
 <div class="row">
   <main id="main" class="col-md-9"><div class="page-header">
       <img src="../logo.png" class="logo" alt=""><h1>Changelog</h1>
-      <small>Source: <a href="https://github.com/stephenturner/biorecap/blob/v0.2.0/NEWS.md" class="external-link"><code>NEWS.md</code></a></small>
+      <small>Source: <a href="https://github.com/stephenturner/biorecap/blob/main/NEWS.md" class="external-link"><code>NEWS.md</code></a></small>
     </div>
 
+    <div class="section level2">
+<h2 class="pkg-version" data-toc-text="0.2.1" id="biorecap-021">biorecap 0.2.1<a class="anchor" aria-label="anchor" href="#biorecap-021"></a></h2>
+<ul><li>Added a <code>host</code> argument to <code><a href="../reference/biorecap_report.html">biorecap_report()</a></code> and <code><a href="../reference/add_summary.html">add_summary()</a></code> that gets passed to <code><a href="https://hauselin.github.io/ollama-r/reference/generate.html" class="external-link">ollamar::generate()</a></code>, allowing the user to choose the host for ollama. By default, <code>host=NULL</code> uses ollama’s default base URL (using the local ollama server). This can be used to connect to a llama server running remotely or within a firewalled network (fixes <a href="https://github.com/stephenturner/biorecap/issues/7" class="external-link">#7</a>).</li>
+<li>Updated tests.</li>
+</ul></div>
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="0.2.0" id="biorecap-020">biorecap 0.2.0<a class="anchor" aria-label="anchor" href="#biorecap-020"></a></h2>
 <ul><li>Added medRxiv support. The <code><a href="../reference/get_preprints.html">get_preprints()</a></code> function will now pull from either the bioRxiv or medRxiv RSS feed depending on the subject passed to it. All downstream functions and reporting updated to reflect this change (fixes <a href="https://github.com/stephenturner/biorecap/issues/5" class="external-link">#5</a>).</li>
