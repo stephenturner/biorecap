@@ -86,7 +86,7 @@ Write an HTML report containing summaries of recent preprints in select subject 
 ```{r, eval=FALSE}
 biorecap_report(output_dir=".", 
                 subject=c("bioinformatics", "infectious_diseases"), 
-                model="llama3.1")
+                model="llama3.2")
 ```
 
 Example HTML report generated from bioRxiv (bioinformatics) and infectious diseases (medRxiv) subjects on September 25, 2024:
@@ -172,6 +172,6 @@ You could create a report for _all_ subjects like this (note, this could take so
 
 ```{r, eval=FALSE}
 biorecap_report(output_dir=".", 
-                subject=subjects, 
+                subject=c(subjects$biorxiv, subjects$medrxiv)
                 model="llama3.2")
 ```

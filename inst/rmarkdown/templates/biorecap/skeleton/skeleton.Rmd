@@ -8,6 +8,7 @@ params:
   subject: NULL
   nsentences: NULL
   model: NULL
+  host: NULL
   output_csv: NULL
   use_example_preprints: FALSE
 ---
@@ -34,7 +35,7 @@ if (params$use_example_preprints) {
   pp <- 
     get_preprints(subject=params$subject) |> 
     add_prompt() |> 
-    add_summary(model=params$model)
+    add_summary(model=params$model, host=params$host)
 }
 if (!is.null(output_csv)) {
   write.csv(pp, output_csv, row.names = FALSE)

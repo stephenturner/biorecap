@@ -8,7 +8,8 @@ biorecap_report(
   output_dir = ".",
   subject = NULL,
   nsentences = 2L,
-  model = "llama3.1",
+  model = "llama3.2",
+  host = NULL,
   use_example_preprints = FALSE,
   ...
 )
@@ -21,6 +22,8 @@ biorecap_report(
 \item{nsentences}{Number of sentences to summarize each paper in.}
 
 \item{model}{The model to use for generating summaries. See \code{\link[ollamar:list_models]{ollamar::list_models()}}.}
+
+\item{host}{The base URL to use. Default is \code{NULL}, which uses Ollama's default base URL.}
 
 \item{use_example_preprints}{Use the example preprints data included with the package instead of fetching new data from bioRxiv/medRxiv. For diagnostic/testing purposes only.}
 
