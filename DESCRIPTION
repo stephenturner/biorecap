@@ -1,6 +1,6 @@
 Package: biorecap
 Title: Retrieve and summarize bioRxiv and medRxiv preprints with a local LLM using ollama
-Version: 0.2.0
+Version: 0.2.1
 Authors@R: 
     person("Stephen", "Turner", , "vustephen@gmail.com", role = c("aut", "cre"),
            comment = c(ORCID = "0000-0001-9140-9028"))
