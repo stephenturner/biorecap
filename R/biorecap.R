@@ -57,6 +57,37 @@ build_prompt_subject <- function(subject,
   return(prompt)
 }
 
+#' Safely query bioRxiv/medRxiv RSS feeds
+#'
+#' @param subject A character vector of valid bioRxiv and/or medRxiv subjects. See [subjects].
+#' @param server A character vector of either "biorxiv" or "medrxiv".
+#'
+#' @return A data frame of preprints from bioRxiv and/or medRxiv.
+#' @export
+#'
+safely_query_rss <- function(subject, server=c("biorxiv", "medrxiv")) {
+  server <- rlang::arg_match(server)
+  baseurl <- sprintf("https://connect.%s.org/%s_xml.php?subject=", server, server)
+  out <-
+    lapply(subject, \(x) {
+      tryCatch({
+        suppressMessages(preprints <- tidyRSS::tidyfeed(paste0(baseurl, x)))
+      },
+      error = function(e) {
+        message("No preprints found for subject: ", x)
+        tibble::tibble(feed_title=character(), feed_link=character(), feed_description=character(), item_title=character(),
+                       item_link=character(), item_description=character(), item_category=list())
+      })
+    })
+  out <-
+    out |>
+    stats::setNames(subject) |>
+    dplyr::bind_rows(.id="subject") |>
+    dplyr::select("subject", title="item_title", url="item_link", abstract="item_description") |>
+    dplyr::mutate(dplyr::across(dplyr::everything(), trimws)) |>
+    dplyr::mutate("source"=server, .before=1)
+}
+
 #' Get bioRxiv/medRxiv preprints
 #'
 #' @param subject A character vector of valid bioRxiv and/or medRxiv subjects. See [subjects].
@@ -80,26 +111,17 @@ get_preprints <- function(subject="all", clean=TRUE) {
   subject_bio <- subject[subject %in% biorecap::subjects$biorxiv]
   if (length(subject_bio)>0) {
     preprints$bio <-
-      lapply(subject_bio, \(x) suppressMessages(preprints <- tidyRSS::tidyfeed(paste0("https://connect.biorxiv.org/biorxiv_xml.php?subject=", x)))) |>
-      stats::setNames(subject_bio) |>
-      dplyr::bind_rows(.id="subject") |>
-      dplyr::select("subject", title="item_title", url="item_link", abstract="item_description") |>
-      dplyr::mutate(dplyr::across(dplyr::everything(), trimws)) |>
+      safely_query_rss(subject=subject_bio, server="biorxiv") |>
       dplyr::mutate("source"="bioRxiv", .before=1)
-    if (nrow(preprints$bio)<1L) stop("Something went wrong. No papers found for subject ", subject) #nocov
+    if (nrow(preprints$bio)<1L) warning("Something went wrong. No papers found for subject ", subject) #nocov
   }
-
 
   subject_med <- subject[subject %in% biorecap::subjects$medrxiv]
   if (length(subject_med)>0) {
     preprints$med <-
-      lapply(subject_med, \(x) suppressMessages(preprints <- tidyRSS::tidyfeed(paste0("https://connect.medrxiv.org/medrxiv_xml.php?subject=", x)))) |>
-      stats::setNames(subject_med) |>
-      dplyr::bind_rows(.id="subject") |>
-      dplyr::select("subject", title="item_title", url="item_link", abstract="item_description") |>
-      dplyr::mutate(dplyr::across(dplyr::everything(), trimws)) |>
+      safely_query_rss(subject=subject_med, server="medrxiv") |>
       dplyr::mutate("source"="medRxiv", .before=1)
-    if (nrow(preprints$med)<1L) stop("Something went wrong. No papers found for subject ", subject) #nocov
+    if (nrow(preprints$med)<1L) warning("Something went wrong. No papers found for subject ", subject) #nocov
   }
 
   preprints <- dplyr::bind_rows(preprints)
