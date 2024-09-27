@@ -73,7 +73,7 @@ use.
 ``` r
 biorecap_report(output_dir=".", 
                 subject=c("bioinformatics", "infectious_diseases"), 
-                model="llama3.1")
+                model="llama3.2")
 ```
 
 Example HTML report generated from bioRxiv (bioinformatics) and
@@ -317,6 +317,6 @@ take some time):
 
 ``` r
 biorecap_report(output_dir=".", 
-                subject=subjects, 
+                subject=c(subjects$biorxiv, subjects$medrxiv)
                 model="llama3.2")
 ```
